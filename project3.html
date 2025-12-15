@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Personal Profile | Eyob Embiale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Colorful CSS Variables */
+        :root {
+            --sunrise: #FF9A76;
+            --sunset: #FF6B6B;
+            --ocean: #4ECDC4;
+            --sky: #45B7D1;
+            --grass: #96CEB4;
+            --lilac: #C9A8E2;
+            --lemon: #FFEAA7;
+            --charcoal: #2D3436;
+            --white: #FFFFFF;
+            --light-bg: #FFF9F2;
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #f5f7ff 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Colorful Header */
+        .colorful-header {
+            text-align: center;
+            padding: 60px 30px;
+            margin-bottom: 50px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--sunset) 0%, var(--sunrise) 50%, var(--lemon) 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .colorful-header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -100px;
+        }
+
+        .colorful-header::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -80px;
+            left: -50px;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-tagline {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            font-weight: 400;
+        }
+
+        /* Colorful Circles Decor */
+        .color-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .circle-1 {
+            width: 120px;
+            height: 120px;
+            background-color: var(--ocean);
+            top: 20%;
+            left: 10%;
+        }
+
+        .circle-2 {
+            width: 80px;
+            height: 80px;
+            background-color: var(--lilac);
+            bottom: 30%;
+            right: 15%;
+        }
+
+        .circle-3 {
+            width: 60px;
+            height: 60px;
+            background-color: var(--grass);
+            top: 50%;
+            right: 25%;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 1100px) {
+            .main-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-top: 6px solid var(--sunrise);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .profile-card.grass {
+            border-top-color: var(--grass);
+        }
+
+        .profile-card.ocean {
+            border-top-color: var(--ocean);
+        }
+
+        .profile-card.lilac {
+            border-top-color: var(--lilac);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .card-icon.sunrise {
+            background: linear-gradient(135deg, var(--sunrise), #FF7F50);
+        }
+
+        .card-icon.grass {
+            background: linear-gradient(135deg, var(--grass), #7BC393);
+        }
+
+        .card-icon.ocean {
+            background: linear-gradient(135deg, var(--ocean), #3AAFA9);
+        }
+
+        .card-icon.lilac {
+            background: linear-gradient(135deg, var(--lilac), #B19CD9);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+
+        /* Profile Image */
+        .profile-img-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 25px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .img-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px dashed var(--sunrise);
+            top: 0;
+            left: 0;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Bio Section */
+        .bio-text {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .color-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .color-tag {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .color-tag.sunrise {
+            background-color: rgba(255, 154, 118, 0.15);
+            color: var(--sunrise);
+        }
+
+        .color-tag.sunrise:hover {
+            background-color: var(--sunrise);
+            color: white;
+        }
+
+        .color-tag.ocean {
+            background-color: rgba(78, 205, 196, 0.15);
+            color: var(--ocean);
+        }
+
+        .color-tag.ocean:hover {
+            background-color: var(--ocean);
+            color: white;
+        }
+
+        .color-tag.grass {
+            background-color: rgba(150, 206, 180, 0.15);
+            color: var(--grass);
+        }
+
+        .color-tag.grass:hover {
+            background-color: var(--grass);
+            color: white;
+        }
+
+        .color-tag.lilac {
+            background-color: rgba(201, 168, 226, 0.15);
+            color: var(--lilac);
+        }
+
+        .color-tag.lilac:hover {
+            background-color: var(--lilac);
+            color: white;
+        }
+
+        /* Colorful Form */
+        .colorful-form-section {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 60px;
+            border-top: 6px solid var(--sky);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--sunset), var(--sky));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--charcoal);
+            font-size: 1.05rem;
+        }
+
+        .colorful-input {
+            width: 100%;
+            padding: 18px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: #f9f9f9;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .colorful-input:focus {
+            outline: none;
+            border-color: var(--ocean);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.15);
+        }
+
+        textarea.colorful-input {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--sunset), var(--sunrise));
+            color: white;
+            border: none;
+            padding: 20px 45px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px auto 0;
+            width: 100%;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+            background: linear-gradient(135deg, var(--sunrise), var(--sunset));
+        }
+
+        /* Footer */
+        .colorful-footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, var(--grass) 0%, var(--ocean) 100%);
+            color: white;
+            margin-top: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: white;
+            transform: translateY(-8px);
+        }
+
+        .social-icon.instagram:hover {
+            color: #E4405F;
+        }
+
+        .social-icon.twitter:hover {
+            color: #1DA1F2;
+        }
+
+        .social-icon.linkedin:hover {
+            color: #0A66C2;
+        }
+
+        .social-icon.github:hover {
+            color: #333;
+        }
+
+        .social-icon.dribbble:hover {
+            color: #EA4C89;
+        }
+
+        .footer-text {
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        /* Success Message */
+        .success-box {
+            background: linear-gradient(135deg, var(--grass), var(--ocean));
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(150, 206, 180, 0.3);
+        }
+
+        .error-message {
+            color: var(--sunset);
+            font-size: 0.95rem;
+            margin-top: 8px;
+            display: none;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Colorful Header -->
+        <header class="colorful-header floating">
+            <div class="color-circles">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+                <div class="circle circle-3"></div>
+            </div>
+            <h1>Eyob Embiale</h1>
+            <p class="header-tagline">Creative Designer & Digital Artist passionate about blending technology with vibrant visual storytelling</p>
+        </header>
+
+        <!-- Main Content Layout -->
+        <div class="main-layout">
+            <!-- Profile Card 1 -->
+            <div class="profile-card">
+                <div class="card-icon sunrise">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h2 class="card-title">About Me</h2>
+                <div class="profile-img-container">
+                    <img src="Eyob.jpg"
+                         alt="Eyob Embiale" class="profile-img">
+                    <div class="img-frame"></div>
+                </div>
+                <p class="bio-text">Hello! I'm Eyob, a digital artist and designer with a passion for creating vibrant, emotionally resonant visuals. I believe color is the most powerful tool in design.</p>
+                <p class="bio-text">Based in Gondar, I draw inspiration from my cultural heritage, nature, and urban landscapes to create unique digital experiences.</p>
+            </div>
+
+            <!-- Profile Card 2 -->
+            <div class="profile-card grass">
+                <div class="card-icon grass">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h2 class="card-title">My Skills</h2>
+                <p class="bio-text">I specialize in blending traditional art principles with modern digital techniques to create compelling visual narratives.</p>
+                
+                <div class="color-tags">
+                    <span class="color-tag sunrise">Digital Illustration</span>
+                    <span class="color-tag ocean">UI/UX Design</span>
+                    <span class="color-tag grass">Brand Identity</span>
+                    <span class="color-tag ocean">Web Design</span>
+                    <span class="color-tag lilac">3D Modeling</span>
+                </div>
+                
+                <p class="bio-text" style="margin-top: 25px;">My work has been featured in design publications and exhibited in galleries across East Africa.</p>
+            </div>
+
+            <!-- Profile Card 3 -->
+            <div class="profile-card ocean">
+                <div class="card-icon ocean">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 class="card-title">Passions & Interests</h2>
+                <p class="bio-text">When I'm not designing, you can find me exploring local markets for colorful textiles, experimenting with plant-based cooking to find the perfect sunset view.</p>
+                <p class="bio-text">I'm also passionate about mentoring young designers and regularly volunteer at community art centers.</p>
+                
+                <div class="color-tags" style="margin-top: 20px;">
+                    <span class="color-tag sunrise">Watercolor Painting</span>
+                    <span class="color-tag ocean">Photography</span>
+                    <span class="color-tag grass">Urban Gardening</span>
+                
+                </div>
+            </div>
+        </div>
+
+        <!-- Colorful Contact Form -->
+        <section class="colorful-form-section">
+            <h2 class="form-title">Let's Create Together</h2>
+            <p class="form-subtitle">Have a colorful project in mind? I'd love to hear about it! Send me a message and let's bring your vision to life.</p>
+            
+            <form id="colorfulForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="colorfulName"><i class="fas fa-user" style="color: var(--sunrise); margin-right: 8px;"></i> Your Name</label>
+                        <input type="text" id="colorfulName" class="colorful-input" placeholder="Enter your full name" required>
+                        <div class="error-message" id="nameError">Please enter your name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="colorfulEmail"><i class="fas fa-envelope" style="color: var(--ocean); margin-right: 8px;"></i> Email Address</label>
+                        <input type="email" id="colorfulEmail" class="colorful-input" placeholder="Enter your email address" required>
+                        <div class="error-message" id="emailError">Please enter a valid email</div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="colorfulSubject"><i class="fas fa-tag" style="color: var(--grass); margin-right: 8px;"></i> Project Type</label>
+                        <select id="colorfulSubject" class="colorful-input" required>
+                            <option value="" disabled selected>Select project type</option>
+                            <option value="branding">Brand Identity & Logo</option>
+                            <option value="web">Website Design</option>
+                            <option value="illustration">Digital Illustration</option>
+                            <option value="motion">Motion Graphics</option>
+                            <option value="other">Other Creative Project</option>
+                        </select>
+                        <div class="error-message" id="subjectError">Please select a project type</div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="colorfulMessage"><i class="fas fa-comment-dots" style="color: var(--lilac); margin-right: 8px;"></i> Your Message</label>
+                        <textarea id="colorfulMessage" class="colorful-input" placeholder="Tell me about your project, timeline, and vision..." required></textarea>
+                        <div class="error-message" id="messageError">Please enter your message (at least 20 characters)</div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Colorful Message
+                </button>
+                
+                <div class="success-box" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Your message has been sent! I'll get back to you within 24 hours.</span>
+                </div>
+            </form>
+        </section>
+
+        <!-- Colorful Footer -->
+        <footer class="colorful-footer">
+            <div class="social-icons">
+                <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon github"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+            <p class="footer-text">© 2025 Eyob Embiale. All rights reserved.</p>
+            <p class="footer-text">This vibrant personal profile was created with HTML, CSS, and JavaScript.</p>
+            <p class="footer-text" style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Inspired by the colors of sunrise, ocean, grass, and sunset</p>
+        </footer>
+    </div>
+
+    <script>
+        // Colorful Form Validation with Visual Feedback
+        document.getElementById('colorfulForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('colorfulName').value.trim();
+            const email = document.getElementById('colorfulEmail').value.trim();
+            const subject = document.getElementById('colorfulSubject').value;
+            const message = document.getElementById('colorfulMessage').value.trim();
+            
+            // Get error message elements
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const subjectError = document.getElementById('subjectError');
+            const messageError = document.getElementById('messageError');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Reset error messages and styles
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            subjectError.style.display = 'none';
+            messageError.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Reset input borders
+            document.getElementById('colorfulName').style.borderColor = '#e0e0e0';
+            document.getElementById('colorfulEmail').style.borderColor = '#e0e0e0';
+            document.getElementById('colorfulSubject').style.borderColor = '#e0e0e0';
+            document.getElementById('colorfulMessage').style.borderColor = '#e0e0e0';
+            
+            let isValid = true;
+            
+            // Validate name
+            if (name === '') {
+                nameError.style.display = 'block';
+                document.getElementById('colorfulName').style.borderColor = 'var(--sunset)';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                emailError.style.display = 'block';
+                document.getElementById('colorfulEmail').style.borderColor = 'var(--sunset)';
+                isValid = false;
+            }
+            
+            // Validate subject
+            if (subject === '' || subject === null) {
+                subjectError.style.display = 'block';
+                document.getElementById('colorfulSubject').style.borderColor = 'var(--sunset)';
+                isValid = false;
+            }
+            
+            // Validate message
+            if (message === '') {
+                messageError.textContent = 'Please enter your message';
+                messageError.style.display = 'block';
+                document.getElementById('colorfulMessage').style.borderColor = 'var(--sunset)';
+                isValid = false;
+            } else if (message.length < 20) {
+                messageError.textContent = 'Message should be at least 20 characters';
+                messageError.style.display = 'block';
+                document.getElementById('colorfulMessage').style.borderColor = 'var(--sunset)';
+                isValid = false;
+            }
+            
+            // If all validation passes
+            if (isValid) {
+                successMessage.style.display = 'flex';
+                
+                // Add a fun color animation to the success message
+                let colors = ['var(--grass)', 'var(--ocean)', 'var(--lilac)', 'var(--sunrise)'];
+                let i = 0;
+                const colorInterval = setInterval(() => {
+                    successMessage.style.background = `linear-gradient(135deg, ${colors[i]}, ${colors[(i+1) % colors.length]})`;
+                    i = (i + 1) % colors.length;
+                }, 1500);
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Log form data (in real app, this would send to server)
+                console.log('Form submitted!');
+                console.log('Name:', name);
+                console.log('Email:', email);
+                console.log('Project Type:', subject);
+                console.log('Message:', message);
+                
+                // Reset form after 5 seconds
+                setTimeout(function() {
+                    document.getElementById('colorfulForm').reset();
+                    successMessage.style.display = 'none';
+                    clearInterval(colorInterval);
+                    
+                    // Animate the submit button
+                    const submitBtn = document.querySelector('.submit-btn');
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent Successfully!';
+                    submitBtn.style.background = 'linear-gradient(135deg, var(--grass), var(--ocean))';
+                    
+                    setTimeout(function() {
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Colorful Message';
+                        submitBtn.style.background = 'linear-gradient(135deg, var(--sunset), var(--sunrise))';
+                    }, 3000);
+                }, 5000);
+            }
+        });
+        
+        // Add colorful focus effects to form inputs
+        const formInputs = document.querySelectorAll('.colorful-input, select');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 0 4px rgba(78, 205, 196, 0.3)';
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add a fun hover effect to profile cards
+        const profileCards = document.querySelectorAll('.profile-card');
+        profileCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const borderColor = window.getComputedStyle(this).borderTopColor;
+                this.style.boxShadow = `0 20px 40px ${borderColor}40`;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'var(--card-shadow)';
+            });
+        });
+    </script>
+</body>
+</html>
